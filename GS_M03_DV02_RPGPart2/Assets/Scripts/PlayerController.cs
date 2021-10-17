@@ -85,9 +85,11 @@ public class PlayerController : MonoBehaviourPun
     }
 
     [PunRPC]
-    public void TakeDamage(int attackerID, int damage)
+    public void TakeDamage(int damage)
     {
         currHP -= damage;
+
+        headerInfo.photonView.RPC("UpdateHealthBar", RpcTarget.All, (int)currHP);
 
         if (currHP <= 0)
             Die();
@@ -102,8 +104,6 @@ public class PlayerController : MonoBehaviourPun
                 sr.color = Color.white;
             }
         }
-
-        headerInfo.photonView.RPC("UpdateHealthBar", RpcTarget.All, currHP);
 
     }
 
@@ -136,7 +136,7 @@ public class PlayerController : MonoBehaviourPun
     void Heal(int amountToHeal)
     {
         currHP = Mathf.Clamp(currHP + amountToHeal, 0, maxHP);
-        headerInfo.photonView.RPC("UpdateHealthBar", RpcTarget.All, currHP);
+        headerInfo.photonView.RPC("UpdateHealthBar", RpcTarget.All, (int)currHP);
     }
 
     [PunRPC]

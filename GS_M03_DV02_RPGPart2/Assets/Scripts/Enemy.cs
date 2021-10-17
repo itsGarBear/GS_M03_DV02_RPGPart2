@@ -44,7 +44,10 @@ public class Enemy : MonoBehaviourPun
             float dist = Vector3.Distance(transform.position, targetPlayer.transform.position);
 
             if (dist < attackRange && Time.time - lastAttackTime >= attackRange)
+            {
+                print("attacking");
                 Attack();
+            }
             else if (dist > attackRange)
             {
                 Vector3 dir = targetPlayer.transform.position - transform.position;

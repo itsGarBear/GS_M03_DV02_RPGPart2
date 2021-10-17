@@ -178,10 +178,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Enemy
   moveSpeed: 3
-  currHP: 10
-  maxHP: 10
+  currHP: 20
+  maxHP: 20
   chaseRange: 5
-  attackRange: 0.5
+  attackRange: 1.5
   playerDetectRate: 0.2
   objectToSpawnOnDeath: GoldPickup
   damage: 5
